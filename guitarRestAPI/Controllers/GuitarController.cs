@@ -100,7 +100,6 @@ namespace guitarRestAPI.Controllers
         [Route("api/guitar/allmodels")]
         public List<guitarModelBrand> GetAllModels()
         {
-
             //Get all of the guitar brands using Linq
             var guitarModelQuery = from models in dc.guitar_models
                                    join brand in dc.guitar_brands on models.guitar_brand_id equals brand.guitar_brand_id

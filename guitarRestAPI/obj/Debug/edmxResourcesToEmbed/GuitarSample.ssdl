@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GuitarSampleModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="guitar_brand">
+    <Key>
+      <PropertyRef Name="guitar_brand_id" />
+    </Key>
+    <Property Name="guitar_brand_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="guitar_model">
+    <Key>
+      <PropertyRef Name="guitar_model_id" />
+    </Key>
+    <Property Name="guitar_model_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="guitar_brand_id" Type="int" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="price" Type="money" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_guitar_model_guitar_brand">
+    <End Role="guitar_brand" Type="Self.guitar_brand" Multiplicity="1" />
+    <End Role="guitar_model" Type="Self.guitar_model" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="guitar_brand">
+        <PropertyRef Name="guitar_brand_id" />
+      </Principal>
+      <Dependent Role="guitar_model">
+        <PropertyRef Name="guitar_brand_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="GuitarSampleModelStoreContainer">
+    <EntitySet Name="guitar_brand" EntityType="Self.guitar_brand" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="guitar_model" EntityType="Self.guitar_model" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_guitar_model_guitar_brand" Association="Self.FK_guitar_model_guitar_brand">
+      <End Role="guitar_brand" EntitySet="guitar_brand" />
+      <End Role="guitar_model" EntitySet="guitar_model" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

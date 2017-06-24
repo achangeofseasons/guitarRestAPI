@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="GuitarSample" Class="guitarSampleDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=J-PC\SQLEXPRESS01;Initial Catalog=GuitarSample;Integrated Security=True;MultipleActiveResultSets=True;Application Name=EntityFramework" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="GuitarSampleConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.guitar_brand" Member="guitar_brands">
+    <Type Name="guitar_brand">
+      <Column Name="guitar_brand_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="guitar_brand_guitar_model" Member="guitar_models" ThisKey="guitar_brand_id" OtherKey="guitar_brand_id" Type="guitar_model" />
+    </Type>
+  </Table>
+  <Table Name="dbo.guitar_model" Member="guitar_models">
+    <Type Name="guitar_model">
+      <Column Name="guitar_model_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="guitar_brand_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="price" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Association Name="guitar_brand_guitar_model" Member="guitar_brand" ThisKey="guitar_brand_id" OtherKey="guitar_brand_id" Type="guitar_brand" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

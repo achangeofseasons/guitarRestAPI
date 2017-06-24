@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="GuitarSampleModelStoreContainer" CdmEntityContainer="GuitarSampleEntities">
+    <EntitySetMapping Name="guitar_brand">
+      <EntityTypeMapping TypeName="GuitarSampleModel.guitar_brand">
+        <MappingFragment StoreEntitySet="guitar_brand">
+          <ScalarProperty Name="guitar_brand_id" ColumnName="guitar_brand_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="guitar_model">
+      <EntityTypeMapping TypeName="GuitarSampleModel.guitar_model">
+        <MappingFragment StoreEntitySet="guitar_model">
+          <ScalarProperty Name="guitar_model_id" ColumnName="guitar_model_id" />
+          <ScalarProperty Name="guitar_brand_id" ColumnName="guitar_brand_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="price" ColumnName="price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

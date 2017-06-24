@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GuitarSampleModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="guitar_brand">
+    <Key>
+      <PropertyRef Name="guitar_brand_id" />
+    </Key>
+    <Property Name="guitar_brand_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="guitar_model" Relationship="Self.FK_guitar_model_guitar_brand" FromRole="guitar_brand" ToRole="guitar_model" />
+  </EntityType>
+  <EntityType Name="guitar_model">
+    <Key>
+      <PropertyRef Name="guitar_model_id" />
+    </Key>
+    <Property Name="guitar_model_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="guitar_brand_id" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <NavigationProperty Name="guitar_brand" Relationship="Self.FK_guitar_model_guitar_brand" FromRole="guitar_model" ToRole="guitar_brand" />
+  </EntityType>
+  <Association Name="FK_guitar_model_guitar_brand">
+    <End Role="guitar_brand" Type="Self.guitar_brand" Multiplicity="1" />
+    <End Role="guitar_model" Type="Self.guitar_model" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="guitar_brand">
+        <PropertyRef Name="guitar_brand_id" />
+      </Principal>
+      <Dependent Role="guitar_model">
+        <PropertyRef Name="guitar_brand_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="GuitarSampleEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="guitar_brand" EntityType="Self.guitar_brand" />
+    <EntitySet Name="guitar_model" EntityType="Self.guitar_model" />
+    <AssociationSet Name="FK_guitar_model_guitar_brand" Association="Self.FK_guitar_model_guitar_brand">
+      <End Role="guitar_brand" EntitySet="guitar_brand" />
+      <End Role="guitar_model" EntitySet="guitar_model" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

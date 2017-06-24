@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="guitarSample">
+  <DataContextMoniker Name="/guitarSampleDataContext" />
+  <nestedChildShapes>
+    <classShape Id="16dc09f6-2aee-461e-9f78-bbcfee28a05a" absoluteBounds="0.75, 1.125, 2, 1.1939925130208338">
+      <DataClassMoniker Name="/guitarSampleDataContext/guitar_brand" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c75ab665-c961-41b5-aa20-05c5219246b7" absoluteBounds="0.765, 1.585, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d491102e-7920-4ea2-a0e9-328fed399b02" absoluteBounds="3.5, 0.875, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/guitarSampleDataContext/guitar_model" />
+      <nestedChildShapes>
+        <elementListCompartment Id="27a25c85-15ae-45e7-b2ec-52e06403e532" absoluteBounds="3.515, 1.335, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.75 : 1.72199625651042); (3.5 : 1.72199625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/guitarSampleDataContext/guitar_brand/guitar_brand_guitar_model" />
+      <nodes>
+        <classShapeMoniker Id="16dc09f6-2aee-461e-9f78-bbcfee28a05a" />
+        <classShapeMoniker Id="d491102e-7920-4ea2-a0e9-328fed399b02" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
